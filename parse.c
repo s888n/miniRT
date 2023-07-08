@@ -11,9 +11,11 @@ int arrLen(char **arr)
 int openFile(char *filename)
 {
     int fd;
+    if(strlen(filename) <= 3|| !validFileName(filename))
+        parseError("invalid filename\n",1);
     fd = open(filename, O_RDONLY);
     if (fd < 0)
-        perror("error : couldn't open file\n"), exit(1);
+        parseError("error : couldn't open file\n", 1);
     return fd;
 }
 void init_scene(t_scene *scene)
@@ -63,7 +65,6 @@ t_scene *parse(char *filename)
         line = get_next_line(fd);
         if (!line)
             break;
-        printf("%s\n", line);
         arr = ft_split(line, ' ');
         if (!checkLine(line))
             parseError("unallowed char detected !!\n", 21);

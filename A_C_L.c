@@ -1,8 +1,8 @@
 #include "rt.h"
 
-void parseError(char *errmsg, int en)
+void parseError(char *msg, int en)
 {
-    perror(errmsg);
+    printf("%s",msg);
     exit(en);
 }
 void norm_victor(t_v3 *v)

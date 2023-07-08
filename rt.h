@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
-//#include "libft/libft.h"
+// #include "libft/libft.h"
 #include "get_next_line/get_next_line.h"
 #define RED	  \033[31m
 #define GREEN \033[32m
@@ -18,12 +18,16 @@
 #define WHITE \033[37m
 #define BOLD  \033[1m
 #define RESET \033[0m
+/*to be replaced with a user defined res*/
+#define W 1000
+/*to be replaced with a user defined res*/
+#define H 1000
 int err;
 typedef struct s_list
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	void *content;
+	struct s_list *next;
+} t_list;
 typedef struct s_color2
 {
 	float red;
@@ -46,11 +50,8 @@ typedef struct s_camera
 typedef enum e_object_type
 {
 	SPHERE,
-	CUBE,
 	PLANE,
 	LIGHT,
-	TRIANGLE,
-	SQUARE,
 	CYLINDER,
 } t_otype;
 
@@ -97,27 +98,28 @@ typedef struct s_info
 	t_image image;
 } t_info;
 
-typedef struct	s_sphere
+typedef struct s_sphere
 {
-	t_v3	center;
-	double	radius;
-}				t_sphere;
-typedef struct	s_cylinder
+	t_v3 center;
+	double radius;
+} t_sphere;
+typedef struct s_cylinder
 {
-	t_v3	p;
-	t_v3	normal;
-	double	radius;
-	double	height;
-}				t_cylinder;
-typedef struct	s_plane
+	t_v3 p;
+	t_v3 normal;
+	double radius;
+	double height;
+} t_cylinder;
+typedef struct s_plane
 {
 	t_v3 p0;
 	t_v3 normal;
-}				t_plane;
-int	ft_isdigit(int c);
-char	**ft_split(char const *s1, char c);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void *content);
+} t_plane;
+
+int ft_isdigit(int c);
+char **ft_split(char const *s1, char c);
+void ft_lstadd_back(t_list **lst, t_list *new);
+t_list *ft_lstnew(void *content);
 t_scene *parse(char *filename);
 int arrLen(char **arr);
 void init_scene(t_scene *scene);
@@ -130,10 +132,13 @@ void parseCoords(t_v3 *point, char *field);
 void ambient(t_scene *scene, char **arr);
 void camera(t_scene *scene, char **arr);
 void light(t_scene *scene, char **arr);
-void pl(t_scene *scene , char **arr);
-void sp(t_scene *scene , char **arr);
-void cy(t_scene *scene , char **arr);
+void pl(t_scene *scene, char **arr);
+void sp(t_scene *scene, char **arr);
+void cy(t_scene *scene, char **arr);
 void checkScene(t_scene *scene);
 int checkLine(char *line);
 int allowedChars(char c);
+int validFileName(char *filename);
+void put_pixel(t_image *image, int x, int y, int color);
+int rgb_to_int(t_color2 *color);
 #endif
