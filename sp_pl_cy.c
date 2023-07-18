@@ -16,6 +16,7 @@ void sp(t_scene *scene , char **arr)
         parseError("sphere ,invalid color\n",14);
     obj->type = SPHERE;
     obj->ptr = sphere;
+    scene->sphere = sphere;
     ft_lstadd_back(&scene->objects,ft_lstnew(obj));
 }
 

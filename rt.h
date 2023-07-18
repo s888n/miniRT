@@ -19,10 +19,11 @@
 #define BOLD  \033[1m
 #define RESET \033[0m
 /*to be replaced with a user defined res*/
-#define W 1000
+#define W 1200
 /*to be replaced with a user defined res*/
-#define H 800
+#define H 1200
 int err;
+typedef struct s_sphere t_sphere;
 typedef struct s_list
 {
 	void *content;
@@ -97,6 +98,7 @@ typedef struct s_scene
 	t_color2 ambient_color;
 	t_camera *camera;
 	t_image *image;
+	t_sphere *sphere;
 } t_scene;
 typedef struct s_info
 {
@@ -131,7 +133,7 @@ typedef struct s_ray
 } t_ray;
 int ft_isdigit(int c);
 char **ft_split(char const *s1, char c);
-void ft_lstadd_back(t_list **lst, t_list *new);
+void ft_lstadd_back(t_list **lst, t_list *n);
 t_list *ft_lstnew(void *content);
 t_scene *parse(char *filename);
 int arrLen(char **arr);
@@ -171,4 +173,5 @@ t_v3 vmin(t_v3 vec1, t_v3 vec2);
 t_ray calculateRay(t_camera *c, double v,double u);
 t_camera *getCam(t_scene *s);
 void draw(t_scene *scene);
+double sphereIntesection(t_ray *r, t_sphere *s);
 #endif

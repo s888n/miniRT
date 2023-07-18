@@ -1,9 +1,9 @@
 NAME = rt
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra 
 RM = rm -f
 MLX_FLAGS = -lmlx -framework openGL -framework appkit
-SRCS = main.c parse.c color.c draw.c vec.c ray.c A_C_L.c sp_pl_cy.c utils.c utils2.c get_next_line/get_next_line_utils.c get_next_line/get_next_line.c
+SRCS = main.c parse.c color.c draw.c vec.c ray.c sphere.c A_C_L.c sp_pl_cy.c utils.c utils2.c get_next_line/get_next_line_utils.c get_next_line/get_next_line.c
 OBJS = $(SRCS:.c=.o)
 INC = rt.h
 

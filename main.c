@@ -9,32 +9,28 @@ t_camera *getCam(t_scene *s)
 	t_camera *c;
 	c = malloc(sizeof(t_camera));
 	c->origin = s->camera->origin;
+	printf("c->origin = %f %f %f\n", c->origin.x, c->origin.y, c->origin.z);
 	c->forward = s->camera->forward;
+	printf("c->forward = %f %f %f\n", c->forward.x, c->forward.y, c->forward.z);
+	c->forward.x +=0.000001; 
+	printf("c->forward = %f %f %f\n", c->forward.x, c->forward.y, c->forward.z);
 	c->fov = s->camera->fov;
+	printf("c->fov = %d\n", c->fov);
 	c->aspect_ratio = (double)W / (double)H;
+	printf("c->aspect_ratio = %f\n", c->aspect_ratio);
 	c->theta = (double)c->fov * M_PI / 180;
+	printf("c->theta = %f\n", c->theta);
 	c->vp_h = tan(c->theta / 2.0);
+	printf("c->vp_h = %f\n", c->vp_h);
 	c->vp_w = c->aspect_ratio * c->vp_h;
+	printf("c->vp_w = %f\n", c->vp_w);
 	c->up = normalize(cross(c->forward, (t_v3){0.0, 1.0, 0.0}));
+	printf("c->up = %f %f %f\n", c->up.x, c->up.y, c->up.z);
 	c->right = normalize(cross(c->forward, c->up));
+	printf("c->right = %f %f %f\n", c->right.x, c->right.y, c->right.z);
 	return c;
 }
-void b(t_image *image,int color)
-{
-	int i;
-	int j;
-	j = 0;
-	while (j < H)
-	{
-		i = 0;
-		while (i < W)
-		{
-			put_pixel(image, i, j, color);
-			i++;
-		}
-		j++;
-	}
-}
+
 void init_mlx(t_info *info)
 {
 	info->id = mlx_init();
