@@ -21,7 +21,7 @@
 /*to be replaced with a user defined res*/
 #define W 1000
 /*to be replaced with a user defined res*/
-#define H 1000
+#define H 800
 int err;
 typedef struct s_list
 {
@@ -42,9 +42,17 @@ typedef struct s_v3
 } t_v3;
 typedef struct s_camera
 {
+
 	t_v3 origin;
-	t_v3 direction;
+	t_v3 forward;
 	int fov;
+	double aspect_ratio;
+	double theta;
+	double vp_h;
+	double vp_w;
+	t_v3 right;
+	t_v3 up;
+	t_v3 lower_left_corner;
 } t_camera;
 
 typedef enum e_object_type
@@ -70,25 +78,26 @@ typedef struct s_light
 	double intensity;
 	t_color2 color;
 } t_light;
-typedef struct s_scene
-{
-	t_list *objects;
-	t_list *lights;
-	int width;
-	int height;
-	double ambient_intensity;
-	t_color2 ambient_color;
-	t_list *cameras;
-	int selected_camera;
-} t_scene;
+
 typedef struct s_image
 {
 	void *img;
-	int *addr;
+	char *addr;
 	int bits_per_pixel;
 	int line_length;
 	int endian;
 } t_image;
+typedef struct s_scene
+{
+	t_list *objects;
+	t_light *light;
+	int width;
+	int height;
+	double ambient_intensity;
+	t_color2 ambient_color;
+	t_camera *camera;
+	t_image *image;
+} t_scene;
 typedef struct s_info
 {
 	t_scene *scene;
@@ -115,7 +124,11 @@ typedef struct s_plane
 	t_v3 p0;
 	t_v3 normal;
 } t_plane;
-
+typedef struct s_ray
+{
+	t_v3 origin;
+	t_v3 direction;
+} t_ray;
 int ft_isdigit(int c);
 char **ft_split(char const *s1, char c);
 void ft_lstadd_back(t_list **lst, t_list *new);
@@ -140,5 +153,22 @@ int checkLine(char *line);
 int allowedChars(char c);
 int validFileName(char *filename);
 void put_pixel(t_image *image, int x, int y, int color);
-int rgb_to_int(t_color2 *color);
+int rgb_to_int(t_v3 *color);
+void change_vec(t_v3 *vec, double x, double y, double z);
+double vec_len_square(t_v3 vec);
+double vec_len(t_v3 vec);
+t_v3 add_vectors(t_v3 vec1, t_v3 vec2);
+t_v3 add_vec_a_b_c(t_v3 vec, double a, double b, double c);
+t_v3 minus_vectors(t_v3 vec1, t_v3 vec2);
+t_v3 minus_vec_a_b_c(t_v3 vec, double a, double b, double c);
+t_v3 multi_vectors(t_v3 vec1, t_v3 vec2);
+t_v3 multi_vec_by_n(t_v3 vec, double n);
+t_v3 divide_vec_by_n(t_v3 vec, double n);
+double dot(t_v3 vec1, t_v3 vec2);
+t_v3 cross(t_v3 vec1, t_v3 vec2);
+t_v3 normalize(t_v3 vec);
+t_v3 vmin(t_v3 vec1, t_v3 vec2);
+t_ray calculateRay(t_camera *c, double v,double u);
+t_camera *getCam(t_scene *s);
+void draw(t_scene *scene);
 #endif

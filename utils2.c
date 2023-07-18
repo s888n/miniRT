@@ -1,5 +1,5 @@
 #include "rt.h"
-t_list	*ft_lstlast(t_list *lst)
+t_list *ft_lstlast(t_list *lst)
 {
 	while (lst)
 	{
@@ -10,35 +10,35 @@ t_list	*ft_lstlast(t_list *lst)
 	return (NULL);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
+	t_list *last;
 
 	if (lst == NULL || new == NULL)
-		return ;
+		return;
 	if (*lst == NULL)
 	{
 		*lst = new;
-		return ;
+		return;
 	}
 	last = ft_lstlast(*lst);
 	new->next = last->next;
 	last->next = new;
 }
-t_list	*ft_lstnew(void *content)
+t_list *ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_list *new;
 
-	new = (t_list *) malloc(sizeof(t_list));
+	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
 	return (new);
 }
-size_t	wordcount(const char *s, char c)
+size_t wordcount(const char *s, char c)
 {
-	size_t	count;
+	size_t count;
 
 	count = 0;
 	while (*s)
@@ -55,10 +55,10 @@ size_t	wordcount(const char *s, char c)
 	return (count);
 }
 
-char	*ft_wd(char const *str, char c)
+char *ft_wd(char const *str, char c)
 {
-	size_t	i;
-	char	*wd;
+	size_t i;
+	char *wd;
 
 	i = 0;
 	while (*str && *str == c)
@@ -79,7 +79,7 @@ char	*ft_wd(char const *str, char c)
 	return (wd);
 }
 
-char	**fail_allo(int i, char **ptr)
+char **fail_allo(int i, char **ptr)
 {
 	while (i > 0)
 	{
@@ -90,11 +90,11 @@ char	**fail_allo(int i, char **ptr)
 	return (NULL);
 }
 
-char	**ft_split(char const *s1, char c)
+char **ft_split(char const *s1, char c)
 {
-	size_t	i;
-	size_t	wc;
-	char	**strings;
+	size_t i;
+	size_t wc;
+	char **strings;
 
 	i = 0;
 	if (!s1)
@@ -117,7 +117,7 @@ char	**ft_split(char const *s1, char c)
 	strings[i] = 0;
 	return (strings);
 }
-int	ft_isdigit(int c)
+int ft_isdigit(int c)
 {
 	return ('0' <= c && c <= '9');
 }

@@ -20,8 +20,8 @@ int openFile(char *filename)
 }
 void init_scene(t_scene *scene)
 {
-    scene->cameras = NULL;
-    scene->lights = NULL;
+    scene->camera = NULL;
+    scene->light = NULL;
     scene->objects = NULL;
     scene->height = 0;
     scene->width = 0;

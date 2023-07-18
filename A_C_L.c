@@ -63,12 +63,12 @@ void camera(t_scene *scene, char **arr)
         parseError("usage : C   x,y,z   a,b,c   fov", 9);
     cam = malloc(sizeof(t_camera));
     parseCoords(&cam->origin, arr[1]);
-    parseCoords(&cam->direction, arr[2]);
-    norm_victor(&cam->direction);
+    parseCoords(&cam->forward, arr[2]);
+    norm_victor(&cam->forward);
     cam->fov = atoi(arr[3]);
     if (cam->fov < 0 || cam->fov > 180)
         parse("fov must be in this range =>[0, 180]\n");
-    ft_lstadd_back(&scene->cameras, ft_lstnew(cam));
+    scene->camera = cam;
 }
 
 void light(t_scene *scene, char **arr)
@@ -82,5 +82,5 @@ void light(t_scene *scene, char **arr)
     parseColor(&light->color, arr[3]);
     if (!validColor(light->color))
         parseError("color not valid\n", 12);
-    ft_lstadd_back(&scene->lights, ft_lstnew(light));
+   scene->light = light;
 }
