@@ -25,9 +25,9 @@ void parseColor(t_color2 *clr, char *field)
     color = ft_split(field, ',');
     if (arrLen(color) != 3) // R , G , B
         parseError("R,G,B\n", 7);
-    clr->red = (double)atoi(color[0]) / 256;
-    clr->green = (double)atoi(color[2]) / 256;
-    clr->blue = (double)atoi(color[1]) / 256;
+    clr->red = (double)atoi(color[0]) / 255;
+    clr->green = (double)atoi(color[1]) / 255;
+    clr->blue = (double)atoi(color[2]) / 255;
 }
 
 void parseCoords(t_v3 *point, char *field)

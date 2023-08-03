@@ -19,11 +19,12 @@
 #define BOLD  \033[1m
 #define RESET \033[0m
 /*to be replaced with a user defined res*/
-#define W 1200
+#define W 800
 /*to be replaced with a user defined res*/
-#define H 1200
+#define H 800
 int err;
 typedef struct s_sphere t_sphere;
+typedef struct s_plane t_plane;
 typedef struct s_list
 {
 	void *content;
@@ -31,9 +32,9 @@ typedef struct s_list
 } t_list;
 typedef struct s_color2
 {
-	float red;
-	float green;
-	float blue;
+	double red;
+	double green;
+	double blue;
 } t_color2;
 typedef struct s_v3
 {
@@ -99,6 +100,7 @@ typedef struct s_scene
 	t_camera *camera;
 	t_image *image;
 	t_sphere *sphere;
+	t_plane *plane;
 } t_scene;
 typedef struct s_info
 {
@@ -113,6 +115,7 @@ typedef struct s_sphere
 {
 	t_v3 center;
 	double radius;
+	t_color2 color;
 } t_sphere;
 typedef struct s_cylinder
 {
@@ -125,12 +128,21 @@ typedef struct s_plane
 {
 	t_v3 p0;
 	t_v3 normal;
+	t_v3 color;
 } t_plane;
 typedef struct s_ray
 {
 	t_v3 origin;
 	t_v3 direction;
 } t_ray;
+
+typedef struct s_inter
+{
+	double		t;
+	t_v3		hit_point;
+	t_v3		normal;
+	t_color2	color;
+} t_inter;
 int ft_isdigit(int c);
 char **ft_split(char const *s1, char c);
 void ft_lstadd_back(t_list **lst, t_list *n);
@@ -174,4 +186,8 @@ t_ray calculateRay(t_camera *c, double v,double u);
 t_camera *getCam(t_scene *s);
 void draw(t_scene *scene);
 double sphereIntesection(t_ray *r, t_sphere *s);
+double planeIntersection(t_ray *r , t_plane *p);
+t_inter inter(t_ray *r,t_sphere *s);
+t_v3 add_light(t_light *light , t_inter *inter);
+double		inter_plane(t_ray *ray, t_plane *pl);
 #endif

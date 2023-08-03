@@ -11,7 +11,7 @@ void sp(t_scene *scene , char **arr)
     sphere = malloc(sizeof(t_sphere));
     parseCoords(&sphere->center,arr[1]);
     sphere->radius = atof(arr[2]) / 2;
-    parseColor(&obj->color,arr[3]);
+    parseColor(&sphere->color,arr[3]);
     if(!validColor(obj->color))
         parseError("sphere ,invalid color\n",14);
     obj->type = SPHERE;
@@ -37,6 +37,9 @@ void pl(t_scene *scene , char **arr)
         parseError("plane : invalid color\n",15);
     obj->type = PLANE;
     obj->ptr = plane;
+    plane->color = (t_v3){obj->color.red,obj->color.green,obj->color.blue};
+    scene->plane = plane;
+
     ft_lstadd_back(&scene->objects,ft_lstnew(obj));
 }
 

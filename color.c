@@ -2,7 +2,7 @@
 
 int clamp(double c)
 {
-    int clr = (int)(c * 255.999);
+    int clr = (int)(c * 255);
     if(clr > 255)
         clr = 255;
     if(clr < 0)
@@ -17,7 +17,7 @@ int rgb_to_int(t_v3 *color)
     c |= clamp(color->x) << 16;
     c |= clamp(color->y) << 8;
     c |= clamp(color->z);
-    return c;
+    return (c);
 }
 
 void put_pixel(t_image *image, int x, int y, int color)

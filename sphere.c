@@ -26,3 +26,27 @@ double sphereIntesection(t_ray *r, t_sphere *s)
         return (t1);
     return (t1 < t2 ? t1 : t2);
 }
+
+double planeIntersection(t_ray *r , t_plane *p)
+{
+    t_v3 n;
+    t_v3 c;
+    double t;
+    double d;
+    double a;
+
+    c = minus_vectors(r->origin, p->p0);
+    n = normalize(p->normal);
+    t = dot(r->direction, n);
+    if(t != 0)
+    {
+        d = dot(c,n);
+        a = -d / t;
+        if(a < 0.000001)
+            return (-1);
+            printf("a = %f\n", a);
+        return (a);
+
+    }
+    return (-1.0);
+}
