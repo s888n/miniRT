@@ -1,5 +1,6 @@
 #include "rt.h"
 
+
 void sp(t_scene *scene , char **arr)
 {   
     t_object *obj;
@@ -37,9 +38,7 @@ void pl(t_scene *scene , char **arr)
         parseError("plane : invalid color\n",15);
     obj->type = PLANE;
     obj->ptr = plane;
-    plane->color = (t_v3){obj->color.red,obj->color.green,obj->color.blue};
     scene->plane = plane;
-
     ft_lstadd_back(&scene->objects,ft_lstnew(obj));
 }
 
@@ -62,5 +61,6 @@ void cy(t_scene *scene , char **arr)
         parseError("cylinder : invalid color\n",16);
     obj->type = CYLINDER;
     obj->ptr = cylinder;
+    scene->cylinder = cylinder;
     ft_lstadd_back(&scene->objects,ft_lstnew(obj));
 }

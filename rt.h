@@ -25,6 +25,7 @@
 int err;
 typedef struct s_sphere t_sphere;
 typedef struct s_plane t_plane;
+typedef struct s_cylinder t_cylinder;
 typedef struct s_list
 {
 	void *content;
@@ -36,6 +37,7 @@ typedef struct s_color2
 	double green;
 	double blue;
 } t_color2;
+
 typedef struct s_v3
 {
 	double x;
@@ -71,7 +73,6 @@ typedef struct s_object
 	void *ptr;
 	t_color2 color;
 	double albedo;
-
 } t_object;
 
 typedef struct s_light
@@ -101,6 +102,7 @@ typedef struct s_scene
 	t_image *image;
 	t_sphere *sphere;
 	t_plane *plane;
+	t_cylinder *cylinder;
 } t_scene;
 typedef struct s_info
 {
@@ -123,6 +125,7 @@ typedef struct s_cylinder
 	t_v3 normal;
 	double radius;
 	double height;
+	t_v3 color;
 } t_cylinder;
 typedef struct s_plane
 {
@@ -136,13 +139,14 @@ typedef struct s_ray
 	t_v3 direction;
 } t_ray;
 
-typedef struct s_inter
+typedef struct s_intersect
 {
-	double		t;
-	t_v3		hit_point;
-	t_v3		normal;
-	t_color2	color;
-} t_inter;
+	double	t;
+	t_v3	color;
+	t_v3	hit_point;
+	t_v3	normal;
+}	t_interesect;
+
 int ft_isdigit(int c);
 char **ft_split(char const *s1, char c);
 void ft_lstadd_back(t_list **lst, t_list *n);
@@ -182,12 +186,13 @@ double dot(t_v3 vec1, t_v3 vec2);
 t_v3 cross(t_v3 vec1, t_v3 vec2);
 t_v3 normalize(t_v3 vec);
 t_v3 vmin(t_v3 vec1, t_v3 vec2);
-t_ray calculateRay(t_camera *c, double v,double u);
+t_ray calculateRay(t_camera *c, double v, double u);
 t_camera *getCam(t_scene *s);
 void draw(t_scene *scene);
 double sphereIntesection(t_ray *r, t_sphere *s);
-double planeIntersection(t_ray *r , t_plane *p);
-t_inter inter(t_ray *r,t_sphere *s);
-t_v3 add_light(t_light *light , t_inter *inter);
-double		inter_plane(t_ray *ray, t_plane *pl);
+double planeIntersection(t_ray *r, t_plane *p);
+//t_inter inter(t_ray *r, t_sphere *s);
+//t_v3 add_light(t_light *light, t_inter *inter);
+double inter_plane(t_ray *ray, t_plane *pl);
+double cylinderIntersection(t_ray *r, t_cylinder *cy);
 #endif
