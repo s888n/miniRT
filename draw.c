@@ -75,7 +75,7 @@ void draw(t_scene *scene)
             color = (t_v3){0,55,66};
             if (t < 0)
                 color = (t_v3){scene->ambient_color.red * scene->ambient_intensity, scene->ambient_color.green * scene->ambient_intensity, scene->ambient_color.blue * scene->ambient_intensity};
-            put_pixel(scene->image, i, j, rgb_to_int(&color));
+            put_pixel(scene->image, i, H - j -1, rgb_to_int(&color));
             i++;
         }
         j--;
