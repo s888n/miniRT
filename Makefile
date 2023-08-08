@@ -2,7 +2,7 @@ NAME = rt
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 RM = rm -f
-MLX_FLAGS = -lmlx -framework openGL -framework appkit
+MLX_FLAGS = -lmlx -framework openGL -framework appkit -fsanitize=address
 SRCS = main.c parse.c color.c inter.c draw.c vec.c ray.c cylinder.c sphere.c A_C_L.c sp_pl_cy.c utils.c utils2.c get_next_line/get_next_line_utils.c get_next_line/get_next_line.c
 OBJS = $(SRCS:.c=.o)
 INC = rt.h

@@ -18,6 +18,7 @@ int openFile(char *filename)
         parseError("error : couldn't open file\n", 1);
     return fd;
 }
+
 void init_scene(t_scene *scene)
 {
     scene->camera = NULL;
@@ -25,9 +26,9 @@ void init_scene(t_scene *scene)
     scene->objects = NULL;
     scene->height = 0;
     scene->width = 0;
-    scene->ambient_color.red = -1;
-    scene->ambient_color.green = -1;
-    scene->ambient_color.blue = -1;
+    scene->ambient_color.x = -1;
+    scene->ambient_color.y = -1;
+    scene->ambient_color.z = -1;
 }
 void parseLine(t_scene *scene, char **arr)
 {

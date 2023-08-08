@@ -31,12 +31,7 @@ typedef struct s_list
 	void *content;
 	struct s_list *next;
 } t_list;
-typedef struct s_color2
-{
-	double red;
-	double green;
-	double blue;
-} t_color2;
+
 
 typedef struct s_v3
 {
@@ -63,7 +58,6 @@ typedef enum e_object_type
 {
 	SPHERE,
 	PLANE,
-	LIGHT,
 	CYLINDER,
 } t_otype;
 
@@ -71,15 +65,15 @@ typedef struct s_object
 {
 	t_otype type;
 	void *ptr;
-	t_color2 color;
-	double albedo;
+	t_v3 color;
+	struct s_object *next;
 } t_object;
 
 typedef struct s_light
 {
 	t_v3 p0;
 	double intensity;
-	t_color2 color;
+	t_v3 color;
 } t_light;
 
 typedef struct s_image
@@ -92,12 +86,12 @@ typedef struct s_image
 } t_image;
 typedef struct s_scene
 {
-	t_list *objects;
+	t_object *objects;
 	t_light *light;
 	int width;
 	int height;
 	double ambient_intensity;
-	t_color2 ambient_color;
+	t_v3 ambient_color;
 	t_camera *camera;
 	t_image *image;
 	t_sphere *sphere;
@@ -117,7 +111,7 @@ typedef struct s_sphere
 {
 	t_v3 center;
 	double radius;
-	t_color2 color;
+	t_v3 color;
 } t_sphere;
 typedef struct s_cylinder
 {
@@ -157,8 +151,8 @@ void init_scene(t_scene *scene);
 int openFile(char *filename);
 void parseError(char *errmsg, int e_n);
 void norm_victor(t_v3 *v);
-int validColor(t_color2 color);
-void parseColor(t_color2 *clr, char *field);
+int validColor(t_v3 color);
+void parseColor(t_v3 *clr, char *field);
 void parseCoords(t_v3 *point, char *field);
 void ambient(t_scene *scene, char **arr);
 void camera(t_scene *scene, char **arr);
@@ -189,10 +183,9 @@ t_v3 vmin(t_v3 vec1, t_v3 vec2);
 t_ray calculateRay(t_camera *c, double v, double u);
 t_camera *getCam(t_scene *s);
 void draw(t_scene *scene);
-double sphereIntesection(t_ray *r, t_sphere *s);
+double sphereIntersection(t_ray *r, t_sphere *s);
 double planeIntersection(t_ray *r, t_plane *p);
-//t_inter inter(t_ray *r, t_sphere *s);
-//t_v3 add_light(t_light *light, t_inter *inter);
-double inter_plane(t_ray *ray, t_plane *pl);
 double cylinderIntersection(t_ray *r, t_cylinder *cy);
+void add_to_objs_list(t_object **head, t_object *new);
+t_object *new_object(t_otype type, void *ptr);
 #endif

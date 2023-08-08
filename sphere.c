@@ -1,6 +1,6 @@
 #include "rt.h"
 
-double sphereIntesection(t_ray *r, t_sphere *s)
+double sphereIntersection(t_ray *r, t_sphere *s)
 {
     double a;
     double b;
@@ -44,9 +44,7 @@ double planeIntersection(t_ray *r , t_plane *p)
         a = -d / t;
         if(a < 0.000001)
             return (-1);
-            printf("a = %f\n", a);
         return (a);
-
     }
     return (-1.0);
 }

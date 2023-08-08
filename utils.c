@@ -4,7 +4,7 @@ void checkScene(t_scene *scene)
 {
     if (!scene->camera)
         parseError("no cam in scene\n", 17);
-    if (scene->ambient_color.red < 0 || scene->ambient_color.green < 0 || scene->ambient_color.blue < 0)
+    if (scene->ambient_color.x < 0 || scene->ambient_color.y < 0 || scene->ambient_color.z < 0)
         parseError("invalid ambient light\n", 18);
     if (scene->width <= 0 || scene <= 0)
         parseError("invalid scene height or width\n", 19);

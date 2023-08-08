@@ -13,21 +13,21 @@ void norm_victor(t_v3 *v)
     v->y /= len;
     v->z /= len;
 }
-int validColor(t_color2 color)
+int validColor(t_v3 color)
 {
-    if (color.red < 0 || color.red > 1 || color.green < 0 || color.green > 1 || color.blue < 0 || color.blue > 1)
+    if (color.x < 0 || color.x > 1 || color.y < 0 || color.y > 1 || color.z < 0 || color.z > 1)
         return 0;
     return 1;
 }
-void parseColor(t_color2 *clr, char *field)
+void parseColor(t_v3 *clr, char *field)
 {
     char **color;
     color = ft_split(field, ',');
     if (arrLen(color) != 3) // R , G , B
         parseError("R,G,B\n", 7);
-    clr->red = (double)atoi(color[0]) / 255;
-    clr->green = (double)atoi(color[1]) / 255;
-    clr->blue = (double)atoi(color[2]) / 255;
+    clr->x = (double)atoi(color[0]) / 255;
+    clr->y = (double)atoi(color[1]) / 255;
+    clr->z = (double)atoi(color[2]) / 255;
 }
 
 void parseCoords(t_v3 *point, char *field)
@@ -43,7 +43,7 @@ void parseCoords(t_v3 *point, char *field)
 
 void ambient(t_scene *scene, char **arr)
 {
-    if (scene->ambient_color.red != -1)
+    if (scene->ambient_color.x != -1)
         parseError("are you retarded ? you can only change once per scene\n", 4);
     if (arrLen(arr) != 3)
         parseError("usage : A   ratio   R,G,B\n", 5);
