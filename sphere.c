@@ -35,6 +35,7 @@ double planeIntersection(t_ray *r , t_plane *p)
     double d;
     double a;
 
+
     c = minus_vectors(r->origin, p->p0);
     n = normalize(p->normal);
     t = dot(r->direction, n);

@@ -38,6 +38,7 @@ void cy(t_scene *scene , char **arr)
 {
     t_cylinder *cylinder;
 
+printf("cy\n");
     if(arrLen(arr) != 6)
         parseError("cylinder : cy     x,y,z   a,b,c    diameter     height    R,G,B\n",13);
     cylinder = malloc(sizeof(t_cylinder));

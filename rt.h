@@ -189,4 +189,5 @@ double cylinderIntersection(t_ray *r, t_cylinder *cy);
 void add_to_objs_list(t_object **head, t_object *new);
 t_object *new_object(t_otype type, void *ptr);
 t_interesect get_intersection(t_ray *r , t_object *objs);
+t_v3 get_color(t_ray *r , t_scene *scene);
 #endif

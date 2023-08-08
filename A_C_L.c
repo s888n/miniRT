@@ -2,7 +2,7 @@
 
 void parseError(char *msg, int en)
 {
-    printf("%s",msg);
+    printf("%s", msg);
     exit(en);
 }
 void norm_victor(t_v3 *v)
@@ -82,5 +82,5 @@ void light(t_scene *scene, char **arr)
     parseColor(&light->color, arr[3]);
     if (!validColor(light->color))
         parseError("color not valid\n", 12);
-   scene->light = light;
+    scene->light = light;
 }
