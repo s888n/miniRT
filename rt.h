@@ -19,9 +19,9 @@
 #define BOLD  \033[1m
 #define RESET \033[0m
 /*to be replaced with a user defined res*/
-#define W 800
+#define W 1200
 /*to be replaced with a user defined res*/
-#define H 800
+#define H 1200
 int err;
 typedef struct s_sphere t_sphere;
 typedef struct s_plane t_plane;
@@ -188,4 +188,5 @@ double planeIntersection(t_ray *r, t_plane *p);
 double cylinderIntersection(t_ray *r, t_cylinder *cy);
 void add_to_objs_list(t_object **head, t_object *new);
 t_object *new_object(t_otype type, void *ptr);
+t_interesect get_intersection(t_ray *r , t_object *objs);
 #endif
