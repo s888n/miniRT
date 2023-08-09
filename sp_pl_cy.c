@@ -9,9 +9,7 @@ void sp(t_scene *scene , char **arr)
         parseError("sphere : sp     x,y,z   diameter    R,G,B\n",13);
     sphere = malloc(sizeof(t_sphere));
     parseCoords(&sphere->center,arr[1]);
-    printf("center : %f %f %f\n",sphere->center.x,sphere->center.y,sphere->center.z);
     sphere->radius = atof(arr[2]) / 2;
-    printf("radius : %f\n",sphere->radius);
     parseColor(&sphere->color,arr[3]);
     if(!validColor(sphere->color))
         parseError("sphere ,invalid color\n",14);

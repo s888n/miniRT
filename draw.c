@@ -32,7 +32,6 @@ void draw(t_scene *scene)
     double v;
     t_v3 color;
     t_ray r;
-   // t_interesect in;
 
     j = H - 1;
     while (j >= 0)
@@ -43,12 +42,6 @@ void draw(t_scene *scene)
             v = (double)i * 2 / W - 1;
             u = (double)j * 2 / H - 1;
             r = calculateRay(scene->camera, v, u);
-            //in.t = findIntersection(&r, scene->objects);
-            // color = get_color(&r, scene);
-            // if (in.t > 0)
-            //     color = in.color;
-            // if (in.t < 0)
-                // color = (t_v3){scene->ambient_color.x * scene->ambient_intensity, scene->ambient_color.y * scene->ambient_intensity, scene->ambient_color.z * scene->ambient_intensity};
             color = get_color(&r, scene);
             put_pixel(scene->image, i, H - j - 1, rgb_to_int(&color));
             i++;
