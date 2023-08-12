@@ -36,15 +36,15 @@ void draw(t_scene *scene)
     j = H - 1;
     while (j >= 0)
     {
-        i = 0;
-        while (i < W)
+        i = W - 1;
+        while (i >= 0)
         {
             v = (double)i * 2 / W - 1;
             u = (double)j * 2 / H - 1;
             r = calculateRay(scene->camera, v, u);
             color = get_color(&r, scene);
-            put_pixel(scene->image, i, H - j - 1, rgb_to_int(&color));
-            i++;
+            put_pixel(scene->image, W -i - 1, H - j - 1, rgb_to_int(&color));
+            i--;
         }
         j--;
     }

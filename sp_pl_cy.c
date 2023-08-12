@@ -45,6 +45,9 @@ printf("cy\n");
     norm_victor(&cylinder->normal);
     cylinder->radius = atof(arr[3]) / 2;
     cylinder->height = atof(arr[4]);
+    cylinder->top_cap_center = add_vectors(cylinder->p,multi_vec_by_n(cylinder->normal,cylinder->height / 2));
+    //cylinder->bottom_cap_center = add_vectors(cylinder->p,multi_vec_by_n(cylinder->normal,-1.0*(cylinder->height / 2)));
+    cylinder->bottom_cap_center = cylinder->p;
     parseColor(&cylinder->color,arr[5]);
     if(!validColor(cylinder->color))
         parseError("cylinder : invalid color\n",16);

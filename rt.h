@@ -120,6 +120,8 @@ typedef struct s_cylinder
 	double radius;
 	double height;
 	t_v3 color;
+	t_v3 top_cap_center;
+	t_v3 bottom_cap_center;
 } t_cylinder;
 typedef struct s_plane
 {
