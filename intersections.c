@@ -75,7 +75,7 @@ t_interesect get_cylinder(t_ray *r, t_cylinder *c, t_interesect in)
     {
         i.color = c->color;
         i.hit_point = add_vectors(r->origin, multi_vec_by_n(r->direction, i.t));
-        d = dot(c->normal, minus_vectors(i.hit_point, c->p));
+        d = dot(c->normal, minus_vectors(i.hit_point, c->bottom_cap_center));
         if (d < 0 || d > c->height)
             return (in);
         i.normal = normalize(minus_vectors(minus_vectors(i.hit_point, c->p), multi_vec_by_n(c->normal, dot(minus_vectors(i.hit_point, c->p), c->normal))));
