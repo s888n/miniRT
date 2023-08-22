@@ -19,10 +19,11 @@
 #define BOLD  \033[1m
 #define RESET \033[0m
 /*to be replaced with a user defined res*/
-#define W 1200
+#define W 1024
 /*to be replaced with a user defined res*/
-#define H 1200
-int err;
+#define H 1024
+#define BIAS 0.000001
+#define SHINE 32
 typedef struct s_sphere t_sphere;
 typedef struct s_plane t_plane;
 typedef struct s_cylinder t_cylinder;
@@ -39,19 +40,22 @@ typedef struct s_v3
 	double y;
 	double z;
 } t_v3;
+
 typedef struct s_camera
 {
 
-	t_v3 origin;
-	t_v3 forward;
-	int fov;
-	double aspect_ratio;
-	double theta;
-	double vp_h;
-	double vp_w;
-	t_v3 right;
-	t_v3 up;
-	t_v3 lower_left_corner;
+  t_v3 origin;
+  t_v3 forward;
+  double fov;
+  double theta;
+  double aspect_ratio;
+  double vp_h;
+  double vp_w;
+  t_v3 up;
+  t_v3 right;
+  t_v3 horizontal;
+  t_v3 vertical;
+  t_v3 btm_lft;
 } t_camera;
 
 typedef enum e_object_type
@@ -74,6 +78,8 @@ typedef struct s_light
 	t_v3 p0;
 	double intensity;
 	t_v3 color;
+	t_v3 direction;
+  	double distance;
 } t_light;
 
 typedef struct s_image
@@ -192,4 +198,6 @@ void add_to_objs_list(t_object **head, t_object *new);
 t_object *new_object(t_otype type, void *ptr);
 t_interesect get_intersection(t_ray *r , t_object *objs);
 t_v3 get_color(t_ray *r , t_scene *scene);
+t_camera *set_up_camera(t_camera *camera);
+t_v3 add_light(t_v3 color, t_interesect *in, t_scene *scene);
 #endif

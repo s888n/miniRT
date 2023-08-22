@@ -94,14 +94,11 @@ double dot(t_v3 vec1, t_v3 vec2)
   Geometrically, the magnitude of the cross product is equal to the area of
   the parallelogram formed by the two input vectors, and its direction is perpendicular
   to the plane spanned by the two vectors.*/
-t_v3 cross(t_v3 vec1, t_v3 vec2)
+t_v3 cross(t_v3 v1, t_v3 v2)
 {
-	t_v3 v;
-
-	v.x = (vec1.y * vec2.z) - (vec1.z * vec2.y);
-	v.y = (vec1.x * vec2.z) - (vec1.z * vec2.x);
-	v.z = (vec1.x * vec2.y) - (vec1.y * vec2.x);
-	return (v);
+    return ((t_v3){v1.y * v2.z - v1.z * v2.y,
+                   v1.z * v2.x - v1.x * v2.z,
+                   v1.x * v2.y - v1.y * v2.x});
 }
 /*normalize a vector by ddivinding each(a,b,c) by the lenght of the vector*/
 t_v3 normalize(t_v3 vec)

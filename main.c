@@ -6,22 +6,6 @@ int close_window(t_info *info)
 	mlx_destroy_window(info->id, info->window);
 	exit(0);
 }
-t_camera *getCam(t_scene *s)
-{
-	t_camera *c;
-	c = malloc(sizeof(t_camera));
-	c->origin = s->camera->origin;
-	c->forward = s->camera->forward;
-	c->forward.x +=0.000001; 
-	c->fov = s->camera->fov;
-	c->aspect_ratio = (double)W / (double)H;
-	c->theta = (double)c->fov * M_PI / 180;
-	c->vp_h = tan(c->theta / 2.0);
-	c->vp_w = c->aspect_ratio * c->vp_h;
-	c->up = normalize(cross(c->forward, (t_v3){0.0, 1.0, 0.0}));
-	c->right = normalize(cross(c->forward, c->up));
-	return c;
-}
 
 void init_mlx(t_info *info)
 {
@@ -41,8 +25,9 @@ void init_mlx(t_info *info)
 void rt(const char *filename)
 {
 	t_info info;
+	//check_file(filename);
 	info.scene = parse((char *)filename);
-	info.scene->camera = getCam(info.scene);
+	info.scene->camera = set_up_camera(info.scene->camera);
 	init_mlx(&info);
 }
 

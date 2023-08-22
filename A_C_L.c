@@ -64,7 +64,6 @@ void camera(t_scene *scene, char **arr)
     cam = malloc(sizeof(t_camera));
     parseCoords(&cam->origin, arr[1]);
     parseCoords(&cam->forward, arr[2]);
-    norm_victor(&cam->forward);
     cam->fov = atoi(arr[3]);
     if (cam->fov < 0 || cam->fov > 180)
         parse("fov must be in this range =>[0, 180]\n");

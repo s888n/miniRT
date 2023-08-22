@@ -24,6 +24,7 @@ double findIntersection(t_ray *r, t_object *objs)
     }
     return (-1);
 }
+
 void draw(t_scene *scene)
 {
     int i;
@@ -39,9 +40,9 @@ void draw(t_scene *scene)
         i = W - 1;
         while (i >= 0)
         {
-            v = (double)i * 2 / W - 1;
-            u = (double)j * 2 / H - 1;
-            r = calculateRay(scene->camera, v, u);
+            u = (double)i  /(double) (W - 1);
+            v = (double)j / (double )(H - 1);
+            r = calculateRay(scene->camera, u, v);
             color = get_color(&r, scene);
             put_pixel(scene->image, W -i - 1, H - j - 1, rgb_to_int(&color));
             i--;
