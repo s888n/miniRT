@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:00:27 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:33:31 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 23:11:14 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_texture	load_texture(char *path)
 		parse_error("error : couldn't load texture\n", 1);
 	texture.addr = mlx_get_data_addr(texture.img, &texture.bits_per_pixel, \
 			&texture.line_length, &texture.endian);
-	printf (" texture  : %s loaded\n", path);
 	return (texture);
 }
 

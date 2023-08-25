@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:01:45 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 21:14:59 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 21:16:39 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	valid_double(double dbl)
 {
 	if (!(dbl <= 1.23e12))
-		parse_error("out of bound error", 69);
+		parse_error("error : out of bound error", 69);
 }
 
 static void	init_vars(double *a, double *b, double *c, double *d)

@@ -3,8 +3,8 @@ A 0.5 255,255,255
 #camera position direction fov
 C 0,0,-60 0,0,1 90
 #light position ratio color
-L -60,0,-40 1 255,255,255
+L -20,0,-40 1 255,255,255
 #sphere position radius color color2/texture(optional)
-sp 0,0,0 60  255,255,255 bonus/textures/moon.xpm
-#plane position direction color colr2
-pl 0,0,30 0,0,-1  255,0,255 
+sp 0,0,0 60  255,255,255 bonus/textures/mars.xpm
+
+pl 0,0,0 0,0,1 0,0,0

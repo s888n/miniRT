@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:28:30 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:46:46 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 21:26:10 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	sp(t_scene *scene, char **arr)
 	if (arrlen(arr) == 5)
 		sp_tex_patt(sphere, arr[4]);
 	add_to_objs_list(&scene->objects, new_object(SPHERE, sphere));
+	free_arr(arr);
 }
 
 void	pl(t_scene *scene, char **arr)
@@ -71,6 +72,7 @@ void	pl(t_scene *scene, char **arr)
 			parse_error("plane : invalid color\n", 15);
 	}
 	add_to_objs_list(&scene->objects, new_object(PLANE, plane));
+	free_arr(arr);
 }
 
 void	cy(t_scene *scene, char **arr)
@@ -96,6 +98,7 @@ void	cy(t_scene *scene, char **arr)
 	if (arrlen(arr) == 7)
 		cy_patt(cylinder, arr[6]);
 	add_to_objs_list(&scene->objects, new_object(CYLINDER, cylinder));
+	free_arr(arr);
 }
 
 void	cn(t_scene *scene, char **arr)
@@ -120,4 +123,5 @@ void	cn(t_scene *scene, char **arr)
 	if (arrlen(arr) == 7)
 		cn_patt(cone, arr[6]);
 	add_to_objs_list(&scene->objects, new_object(CONE, cone));
+	free_arr(arr);
 }

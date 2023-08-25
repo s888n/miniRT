@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:43 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/23 20:02:44 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 22:48:31 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	sp(t_scene *scene, char **arr)
 	parse_color(&sphere->color, arr[3]);
 	if (!valid_color(sphere->color))
 		parse_error("sphere ,invalid color\n", 14);
+	free_arr(arr);
 	add_to_objs_list(&scene->objects, new_object(SPHERE, sphere));
 }
 
@@ -40,6 +41,7 @@ void	pl(t_scene *scene, char **arr)
 	parse_color(&plane->color, arr[3]);
 	if (!valid_color(plane->color))
 		parse_error("plane : invalid color\n", 15);
+	free_arr(arr);
 	add_to_objs_list(&scene->objects, new_object(PLANE, plane));
 }
 
@@ -62,5 +64,6 @@ void	cy(t_scene *scene, char **arr)
 	parse_color(&cylinder->color, arr[5]);
 	if (!valid_color(cylinder->color))
 		parse_error("cylinder : invalid color\n", 16);
+	free_arr(arr);
 	add_to_objs_list(&scene->objects, new_object(CYLINDER, cylinder));
 }

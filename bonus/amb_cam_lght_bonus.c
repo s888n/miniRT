@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:25:27 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:33:17 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 21:25:42 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ambient(t_scene *scene, char **arr)
 	parse_color(&scene->ambient_color, arr[2]);
 	if (!valid_color(scene->ambient_color))
 		parse_error("color not valid\n", 8);
+	free_arr(arr);
 }
 
 void	camera(t_scene *scene, char **arr)
@@ -75,6 +76,7 @@ void	camera(t_scene *scene, char **arr)
 	if (cam->fov < 0 || cam->fov > 180)
 		parse("fov must be in this range =>[0, 180]\n");
 	scene->camera = cam;
+	free_arr(arr);
 }
 
 void	light(t_scene *scene, char **arr)
@@ -93,4 +95,5 @@ void	light(t_scene *scene, char **arr)
 		parse_error("color not valid\n", 12);
 	light->next = NULL;
 	add_to_light_list(&scene->lights, light);
+	free_arr(arr);
 }
