@@ -5,6 +5,6 @@ C 0,0,-60 0,0,1 90
 #light position ratio color
 L -60,0,-40 1 255,255,255
 #sphere position radius color color2/texture(optional)
-sp 0,0,0 60  255,255,255 bonus/textures/earth.xpm
+sp 0,0,0 60  255,255,255 bonus/textures/moon.xpm
 #plane position direction color colr2
 pl 0,0,30 0,0,-1  255,0,255 
