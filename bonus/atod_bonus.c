@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:25:39 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 20:39:07 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 21:14:55 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	valid_double(double dbl)
 {
-	if (dbl >= __DBL_MAX__ || dbl <= __FLT_MIN__)
-		parse_error("Error: double overflow", 69);
+	if (!(dbl <= 1.23e12))
+		parse_error("out of bound error", 69);
 }
 
 static void	init_vars(double *a, double *b, double *c, double *d)
