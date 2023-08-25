@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:00:27 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 23:11:14 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 23:45:32 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,20 @@ int	check_file(char *path)
 
 t_texture	load_texture(char *path)
 {
-	t_texture	texture;
-	void		*mlx;
+	t_texture	t;
 
 	if (ft_strncmp(path + (ft_strlen2(path) - 4), ".xpm", 4))
 		parse_error("error : invalid texture file\n", 1);
 	if (!check_file(path))
 		parse_error("error : texture file error!\n", 23);
-	mlx = mlx_init();
-	texture.img = mlx_xpm_file_to_image(mlx, path, \
-			&texture.width, &texture.height);
-	if (!texture.img)
+	t.mlx = mlx_init();
+	t.img = mlx_xpm_file_to_image(t.mlx, path, \
+			&t.width, &t.height);
+	if (!t.img)
 		parse_error("error : couldn't load texture\n", 1);
-	texture.addr = mlx_get_data_addr(texture.img, &texture.bits_per_pixel, \
-			&texture.line_length, &texture.endian);
-	return (texture);
+	t.addr = mlx_get_data_addr(t.img, &t.bits_per_pixel, \
+			&t.line_length, &t.endian);
+	return (t);
 }
 
 t_v3	get_bump(t_texture *t, t_uv uv)

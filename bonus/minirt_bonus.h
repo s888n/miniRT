@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:59:59 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:47:38 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/25 23:48:28 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,6 @@ typedef struct s_sphere
 	t_v3		color2;
 	int			has_pattern;
 	int			has_bump;
-	t_texture	t;
 	t_texture	bump;
 }	t_sphere;
 
@@ -287,4 +286,5 @@ t_v3			reflect_vec(t_v3 l, t_v3 n);
 void			spacer(char *s);
 void			cn_patt(t_cone *cone, char *arr);
 void			cy_patt(t_cylinder *cylinder, char *arr);
+void			free_sphere(t_sphere *sphere);
 #endif
