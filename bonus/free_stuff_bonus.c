@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:59:33 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 23:49:02 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/26 18:00:55 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	free_arr(char **arr)
 
 void	free_sphere(t_sphere *sphere)
 {
-	if(sphere->has_bump == 1)
+	if (sphere->has_bump == 1)
 	{
 		mlx_destroy_image (sphere->bump.mlx, sphere->bump.img);
 		free (sphere->bump.mlx);

@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:26:51 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/23 21:26:52 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/26 18:33:15 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_v3	get_light(t_scene *s, t_light *l, t_interesect *in)
 	if (shade(in, s, l))
 		return ((t_v3){0, 0, 0});
 	else
-		return (multi_vectors(in->color, light_color));
+		return (light_color);
 }
 
 t_v3	add_lights(t_v3 color, t_interesect *in, t_scene *scene)

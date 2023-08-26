@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:16 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/23 20:02:17 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/26 18:29:39 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_v3	get_light(t_scene *s, t_light *l, t_interesect *in)
 	if (shade(in, s, l))
 		return ((t_v3){0, 0, 0});
 	else
-		return (multi_vectors(in->color, light_color));
+		return (light_color);
 }
 
 t_v3	add_lights(t_v3 color, t_interesect *in, t_scene *scene)
@@ -78,5 +78,5 @@ t_v3	add_lights(t_v3 color, t_interesect *in, t_scene *scene)
 	light_color = (t_v3){0, 0, 0};
 	ambiant = multi_vec_by_n(scene->ambient_color, scene->ambient_intensity);
 	light_color = add_vectors(get_light(scene, scene->light, in), ambiant);
-	return (multi_vectors(color, add_vectors(ambiant, light_color)));
+	return (multi_vectors(color, light_color));
 }
