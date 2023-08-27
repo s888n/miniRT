@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:31 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 17:09:14 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 14:06:29 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	invalid_double(char *s)
 
 	i = -1;
 	while (s[++i])
-		if (!ft_isdigit(s[i]) && s[i] != '.' && s[i] != '-')
+		if (!ft_isdigit(s[i]) && s[i] != '.' && \
+		(s[i] == '-' && i != 0))
 			return (1);
 	return (0);
 }
