@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:27 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 23:31:52 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:46:34 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,4 +224,5 @@ int				check_double(char *s, int n);
 void			free_scene(t_scene *scene);
 t_v3			reflect_vec(t_v3 l, t_v3 n);
 void			spacer(char *s);
+void			invalid_shape(char *s, size_t n);
 #endif

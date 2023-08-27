@@ -1,0 +1,8 @@
+#ambian light ratio color
+A 0.01 255,255,255
+#camera position direction fov
+C 0,0,-60 0,0,1 90
+#light position ratio color
+L -40,0,-40 1 255,255,255
+#sphere position radius color
+sp 0,0,0 20  166,0,0

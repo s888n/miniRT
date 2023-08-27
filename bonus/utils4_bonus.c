@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 20:30:00 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:47:14 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:43:05 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,10 @@ void	cy_patt(t_cylinder *cylinder, char *arr)
 	parse_color(&cylinder->color2, arr);
 	if (!valid_color(cylinder->color2))
 		parse_error("cylinder : invalid color\n", 16);
+}
+
+void	invalid_shape(char *s, size_t n)
+{
+	if (ft_strlen2(s) != n)
+		parse_error("invalid name\n", 13);
 }

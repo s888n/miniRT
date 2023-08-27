@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:25:27 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 21:25:42 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:44:23 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ambient(t_scene *scene, char **arr)
 		parse_error("you can only change once per scene\n", 4);
 	if (arrlen(arr) != 3)
 		parse_error("usage : A   ratio   R,G,B\n", 5);
+	invalid_shape(arr[0], 1);
 	scene->ambient_intensity = ft_atod(arr[1]);
 	if (scene->ambient_intensity < 0 || scene->ambient_intensity > 1)
 		parse_error("ratio is too high or too low or you're too high !!\n", 6);
@@ -69,6 +70,7 @@ void	camera(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4)
 		parse_error("usage : C   x,y,z   a,b,c   fov", 9);
+	invalid_shape(arr[0], 1);
 	cam = malloc(sizeof(t_camera));
 	parse_coords(&cam->origin, arr[1]);
 	parse_coords(&cam->forward, arr[2]);
@@ -85,6 +87,7 @@ void	light(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4)
 		parse_error("usage : L   x,y,z   brightness    R,G,B\n", 11);
+	invalid_shape(arr[0], 1);
 	light = malloc(sizeof(t_light));
 	parse_coords(&light->p0, arr[1]);
 	light->intensity = ft_atod(arr[2]);

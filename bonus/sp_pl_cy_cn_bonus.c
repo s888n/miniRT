@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:28:30 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 21:26:10 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:43:54 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sp(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4 && arrlen(arr) != 5)
 		parse_error("sphere : sp     x,y,z   diameter    R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	sphere = malloc(sizeof(t_sphere));
 	parse_coords(&sphere->center, arr[1]);
 	sphere->radius = ft_atod(arr[2]) / 2.0;
@@ -56,6 +57,7 @@ void	pl(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4 && arrlen(arr) != 5)
 		parse_error("plane : pl     x,y,z   a,b,c    R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	plane = malloc(sizeof(t_plane));
 	parse_coords(&plane->p0, arr[1]);
 	parse_coords(&plane->normal, arr[2]);
@@ -81,6 +83,7 @@ void	cy(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 6 && arrlen(arr) != 7)
 		parse_error("cy x,y,z a,b,c diameter height  R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	cylinder = malloc(sizeof(t_cylinder));
 	parse_coords(&cylinder->p, arr[1]);
 	parse_coords(&cylinder->normal, arr[2]);
@@ -107,6 +110,7 @@ void	cn(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 6 && arrlen(arr) != 7)
 		parse_error("cn  x,y,z  a,b,c   diameter  height R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	cone = malloc(sizeof(t_cone));
 	parse_coords(&cone->center, arr[1]);
 	parse_coords(&cone->normal, arr[2]);

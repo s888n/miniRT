@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:59:59 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/25 23:48:28 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:43:14 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,4 +287,5 @@ void			spacer(char *s);
 void			cn_patt(t_cone *cone, char *arr);
 void			cy_patt(t_cylinder *cylinder, char *arr);
 void			free_sphere(t_sphere *sphere);
+void			invalid_shape(char *s, size_t n);
 #endif

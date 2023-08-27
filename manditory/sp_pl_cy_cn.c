@@ -6,11 +6,17 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:43 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/26 18:11:02 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 13:46:03 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	invalid_shape(char *s, size_t n)
+{
+	if (ft_strlen2(s) != n)
+		parse_error("invalid name\n", 13);
+}
 
 void	sp(t_scene *scene, char **arr)
 {
@@ -18,6 +24,7 @@ void	sp(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4)
 		parse_error("sphere : sp     x,y,z   diameter    R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	sphere = malloc(sizeof(t_sphere));
 	parse_coords(&sphere->center, arr[1]);
 	sphere->radius = ft_atod(arr[2]) / 2;
@@ -34,6 +41,7 @@ void	pl(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 4)
 		parse_error("plane : pl     x,y,z   a,b,c    R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	plane = malloc(sizeof(t_plane));
 	parse_coords(&plane->p0, arr[1]);
 	parse_coords(&plane->normal, arr[2]);
@@ -51,6 +59,7 @@ void	cy(t_scene *scene, char **arr)
 
 	if (arrlen(arr) != 6)
 		parse_error("cy x,y,z a,b,c diameter height R,G,B\n", 13);
+	invalid_shape(arr[0], 2);
 	cylinder = malloc(sizeof(t_cylinder));
 	parse_coords(&cylinder->p, arr[1]);
 	parse_coords(&cylinder->normal, arr[2]);
