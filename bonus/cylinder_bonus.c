@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:26:24 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/24 20:31:16 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/08/27 21:08:29 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ t_interesect	cy_top_cap(t_ray *r, t_cylinder *c, t_interesect in)
 			i.hit_point = add_vectors(r->origin, \
 					multi_vec_by_n(r->direction, i.t));
 			i.normal = p.normal;
+			i.shape = c;
+			i.type = CYLINDER;
+			i.has_pattern = c->has_pattern;
 			in = i;
 		}
 	}
@@ -82,6 +85,9 @@ t_interesect	cy_btm_cap(t_ray *r, t_cylinder *c, t_interesect in)
 			i.hit_point = add_vectors(r->origin, \
 				multi_vec_by_n(r->direction, i.t));
 			i.normal = p.normal;
+			i.shape = c;
+			i.type = CYLINDER;
+			i.has_pattern = c->has_pattern;
 			in = i;
 		}
 	}
@@ -104,6 +110,9 @@ t_interesect	cylinder(t_ray *r, t_cylinder *c, t_interesect in)
 		i.normal = normalize(minus_vectors(minus_vectors(i.hit_point, c->p), \
 				multi_vec_by_n(c->normal, \
 				dot(minus_vectors(i.hit_point, c->p), c->normal))));
+		i.shape = c;
+		i.type = CYLINDER;
+		i.has_pattern = c->has_pattern;
 		in = i;
 	}
 	return (in);

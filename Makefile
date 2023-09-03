@@ -6,14 +6,14 @@
 #    By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 20:02:22 by srachdi           #+#    #+#              #
-#    Updated: 2023/08/25 23:50:21 by srachdi          ###   ########.fr        #
+#    Updated: 2023/08/27 14:55:52 by srachdi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 NAME_BONUS = miniRT_Bonus
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -f
 MLX_FLAGS = -lmlx -framework openGL -framework appkit 
 SRCS = manditory/main.c  manditory/light_utils.c manditory/vec2.c manditory/utils3.c manditory/utils4.c manditory/plane.c manditory/misc.c  manditory/atod.c manditory/light.c  manditory/camera.c  manditory/free_stuff.c  manditory/parse.c manditory/color.c  manditory/draw.c manditory/vec.c manditory/ray.c manditory/cylinder.c manditory/sphere.c manditory/intersections.c manditory/amb_cam_lght.c manditory/sp_pl_cy_cn.c manditory/utils.c manditory/utils2.c manditory/get_next_line/get_next_line_utils.c manditory/get_next_line/get_next_line.c
@@ -26,14 +26,14 @@ INC_BONUS = bonus/minirt_bonus.h
 %.o : %.c $(INC)
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 all : $(NAME)
-	@echo "\033[0;32m ./miniRT [file.rt].\033[0m"
+	@echo "\033[1;36m ./miniRT [filename].rt\033[0m"
 $(NAME) :  $(OBJS)
 	@$(CC) $(CFLAGS)  -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
 all : $(NAME)
 
 bonus : $(NAME_BONUS)
-	@echo "\033[0;32m ./miniRT_Bonus [file.rt].\033[0m"
+	@echo "\033[1;35m ./miniRT_Bonus [filename].rt\033[0m"
 $(NAME_BONUS) : $(OBJS_BONUS) $(INC_BONUS)
 	@$(CC) $(CFLAGS)  -o $(NAME_BONUS) $(OBJS_BONUS) $(MLX_FLAGS)
 clean :

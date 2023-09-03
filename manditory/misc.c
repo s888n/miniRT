@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:31 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/27 14:06:29 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/09/03 23:51:43 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@ int	esc_and_x_hook(t_info *info)
 	mlx_hook(info->window, 2, 0, key_press, info);
 	return (0);
 }
-
+//why * character passes ?
 int	invalid_double(char *s)
 {
 	int	i;
 
 	i = -1;
+	if(s[0] == '-')
+		i++;
 	while (s[++i])
-		if (!ft_isdigit(s[i]) && s[i] != '.' && \
-		(s[i] == '-' && i != 0))
+		if (!ft_isdigit(s[i]) && s[i] != '.')
 			return (1);
 	return (0);
 }
