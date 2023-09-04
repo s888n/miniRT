@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:01:19 by srachdi           #+#    #+#             */
-/*   Updated: 2023/09/03 23:54:08 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/09/04 18:49:31 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ambient(t_scene *scene, char **arr)
 	if (arrlen(arr) != 3)
 		parse_error("usage : A   ratio   R,G,B\n", 5);
 	invalid_shape(arr[0], 1);
-	if(check_double(arr[1], 1))
+	if(!check_double(arr[1], 1))
 		parse_error("nice try  :)\n", 7);
 	scene->ambient_intensity = ft_atod(arr[1]);
 	if (scene->ambient_intensity < 0 || scene->ambient_intensity > 1)
@@ -74,7 +74,7 @@ void	camera(t_scene *scene, char **arr)
 	cam = malloc(sizeof(t_camera));
 	parse_coords(&cam->origin, arr[1]);
 	parse_coords(&cam->forward, arr[2]);
-	if(check_double(arr[3], 1))
+	if(!check_double(arr[3], 1))
 		parse_error("nice try  :)\n", 7);
 	cam->fov = ft_atod(arr[3]);
 	if (cam->fov < 0 || cam->fov > 180)
@@ -92,7 +92,7 @@ void	light(t_scene *scene, char **arr)
 	invalid_shape(arr[0], 1);
 	light = malloc(sizeof(t_light));
 	parse_coords(&light->p0, arr[1]);
-	if(check_double(arr[2], 1))
+	if(!check_double(arr[2], 1))
 		parse_error("nice try  :)\n", 7);
 	light->intensity = ft_atod(arr[2]);
 	if (light->intensity < 0 || light->intensity > 1)
