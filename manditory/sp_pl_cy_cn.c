@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:02:43 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/27 13:46:03 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/09/06 08:13:05 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	sp(t_scene *scene, char **arr)
 	invalid_shape(arr[0], 2);
 	sphere = malloc(sizeof(t_sphere));
 	parse_coords(&sphere->center, arr[1]);
+	if (!check_double(arr[2], 1))
+		parse_error("sphere : Bruh?\n", 14);
 	sphere->radius = ft_atod(arr[2]) / 2;
 	parse_color(&sphere->color, arr[3]);
 	if (!valid_color(sphere->color))
@@ -64,6 +66,8 @@ void	cy(t_scene *scene, char **arr)
 	parse_coords(&cylinder->p, arr[1]);
 	parse_coords(&cylinder->normal, arr[2]);
 	norm_victor(&cylinder->normal);
+	if (!check_double(arr[3], 1) || !check_double(arr[4], 1))
+		parse_error("cylinder : Bruh ?\n", 16);
 	cylinder->radius = ft_atod(arr[3]) / 2;
 	cylinder->height = ft_atod(arr[4]);
 	cylinder->top_cap_center = add_vectors(cylinder->p, \

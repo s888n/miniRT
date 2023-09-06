@@ -6,7 +6,7 @@
 /*   By: srachdi <srachdi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:28:30 by srachdi           #+#    #+#             */
-/*   Updated: 2023/08/27 13:43:54 by srachdi          ###   ########.fr       */
+/*   Updated: 2023/09/06 08:16:00 by srachdi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	sp(t_scene *scene, char **arr)
 	invalid_shape(arr[0], 2);
 	sphere = malloc(sizeof(t_sphere));
 	parse_coords(&sphere->center, arr[1]);
+	if (!check_double(arr[2], 1))
+		parse_error("sphere : Bruh?\n", 14);
 	sphere->radius = ft_atod(arr[2]) / 2.0;
 	parse_color(&sphere->color, arr[3]);
 	sphere->has_pattern = 0;
@@ -115,6 +117,8 @@ void	cn(t_scene *scene, char **arr)
 	parse_coords(&cone->center, arr[1]);
 	parse_coords(&cone->normal, arr[2]);
 	norm_victor(&cone->normal);
+	if (!check_double(arr[3], 1) || !check_double(arr[4], 1))
+		parse_error("cone : Bruh ?\n", 16);
 	cone->radius = ft_atod(arr[3]) / 2;
 	cone->height = ft_atod(arr[4]);
 	cone->tip = add_vectors(cone->center, \
