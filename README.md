@@ -1,1 +1,1 @@
-# miniRT is simple Raytracer in c;
+# miniRT is simple Raytracer in C
