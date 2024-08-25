@@ -1,7 +1,0 @@
-{
-    "cmake.configureOnOpen": true,
-    "files.associations": {
-        "mlx42.h": "c",
-        "__locale": "c"
-    }
-}
