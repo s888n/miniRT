@@ -34,3 +34,4 @@ This project is an introduction to the world of Raytracing. The goal is to creat
 - [Scratchapixel](https://www.scratchapixel.com/)
 - [QuantitativeBytes](https://youtube.com/playlist?list=PL3WoIG-PLjSt54LvzY2SuBQDl-cXa11Tm&si=kDRuiPggamnt-guM)
 - [dot and cross product](https://www.mathsisfun.com/algebra/vectors-dot-product.html)
+- [ray-shape intersection equations](http://www.illusioncatalyst.com/notes.php)
