@@ -20,12 +20,6 @@ This project is an introduction to the world of Raytracing. The goal is to creat
 |<img width="300" src="images/all.png" alt="all shapes">|<img width="300" src="images/multi.png" alt="multiple lights">|<img width="300" src="images/room.png" alt="room">|
 |<img width="300" src="images/check.png" alt="checkered shapes">|<img width="300" src="images/check2.png" alt="checkered shapes">|<img width="300" src="images/h2o.png" alt="water molecule">|
 |<img width="300" src="images/meth.png" alt="meth molecule">|<img width="300" src="images/moon.png" alt="moon">|<img width="300" src="images/mars.png" alt="mars">|
-    <!-- <img src="images/check.png" alt="checkered shapes">
-    <img src="images/check2.png" alt="checkered shapes">
-    <img src="images/h2o.png" alt="water molecule">
-    <img src="images/meth.png" alt="meth molecule">
-    <img src="images/moon.png" alt="moon">
-    <img src="images/mars.png" alt="mars"> -->
 
 ## Resources
 
